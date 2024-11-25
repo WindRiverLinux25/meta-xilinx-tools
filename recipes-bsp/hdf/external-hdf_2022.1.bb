@@ -41,7 +41,8 @@ PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 
 # Don't set S = "${WORKDIR}/git" as we need this to work for other protocols
 # HDF_NAME will be adjusted to include /git if needed
-S = "${WORKDIR}"
+S = "${WORKDIR}/sources"
+UNPACKDIR = "${S}"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"

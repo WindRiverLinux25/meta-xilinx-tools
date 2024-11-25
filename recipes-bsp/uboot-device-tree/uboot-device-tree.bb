@@ -13,7 +13,8 @@ inherit devicetree xsctdt xsctyaml
 
 PROVIDES = "virtual/uboot-dtb"
 
-S = "${WORKDIR}/git"
+UNPACKDIR = "${WORKDIR}/sources"
+S = "${UNPACKDIR}/git"
 
 # Version should match device-tree recipe
 PV = '${XILINX_XSCT_VERSION}+git'
@@ -32,7 +33,7 @@ COMPATIBLE_MACHINE:versal-net = ".*"
 XSCTH_BUILD_CONFIG ?= ""
 
 DT_FILES_PATH = "${XSCTH_WS}/${XSCTH_PROJ}"
-DT_INCLUDE:append = " ${WORKDIR}"
+DT_INCLUDE:append = " ${UNPACKDIR}"
 DT_PADDING_SIZE = "0x1000"
 
 UBOOT_DTS ?= ""
@@ -46,7 +47,7 @@ SRC_URI:append = "${@" ".join(["file://%s" % f for f in (d.getVar('UBOOT_DTS') o
 do_configure:prepend () {
     if [ ! -z "${UBOOT_DTS}" ]; then
         for f in ${UBOOT_DTS}; do
-            cp  ${WORKDIR}/${f} ${DT_FILES_PATH}/
+            cp  ${UNPACKDIR}/${f} ${DT_FILES_PATH}/
         done
         return
     fi

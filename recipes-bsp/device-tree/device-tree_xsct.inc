@@ -13,8 +13,8 @@ inherit xsctdt xsctyaml
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-S = "${WORKDIR}/git"
-B = "${WORKDIR}/${BPN}-build"
+UNPACKDIR = "${WORKDIR}/sources"
+S = "${UNPACKDIR}/git"
 
 XSCTH_BUILD_CONFIG = ""
 YAML_COMPILER_FLAGS ?= ""
@@ -26,7 +26,7 @@ DT_RELEASE_VERSION ?= "${XILINX_XSCT_VERSION}"
 
 PV .= "${@'' if d.getVar('DT_RELEASE_VERSION') == d.getVar('XILINX_XSCT_VERSION') else '+${DT_RELEASE_VERSION}'}"
 
-DT_INCLUDE:append = " ${WORKDIR} ${S}/device_tree/data/kernel_dtsi/${DT_RELEASE_VERSION}/BOARD/"
+DT_INCLUDE:append = " ${UNPACKDIR} ${S}/device_tree/data/kernel_dtsi/${DT_RELEASE_VERSION}/BOARD/"
 DT_INCLUDE:append = " ${S}/device_tree/data/kernel_dtsi/${DT_RELEASE_VERSION}/include/"
 DT_PADDING_SIZE = "0x1000"
 DTC_FLAGS:append = "${@['', ' -@'][d.getVar('YAML_ENABLE_DT_OVERLAY') == '1']}"
