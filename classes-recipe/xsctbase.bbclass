@@ -34,6 +34,7 @@ HW_ARG ??= "-processor_ip ${XSCTH_PROC_IP} -hdf ${XSCTH_HDF} -arch ${XSCTH_ARCH}
 
 DEPENDS += 'xsct-native'
 DEPENDS += 'ncurses-native'
+DEPENDS += 'openssl-native'
 
 do_configure[vardeps] += "TOOL_VER_MAIN"
 do_configure[depends] += "virtual/hdf:do_deploy"
