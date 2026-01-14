@@ -5,6 +5,13 @@ Versal devices.
 
 See [XSCT Build Instructions](README.xsct.bsp.md) for XSCT build workflows.
 
+## Deprecation Notice
+
+XSCT has been deprecated.  All non Microblaze XSCT BSPs will be deprecated in
+version 2026.1, while Microblaze will be end-of-life in 2026.2.  Users are
+advised to start new projects with the SDT workflow, and transition Microblaze
+to Microblaze-V.
+
 ## Maintainers, Mailing list, Patches
 
 Please send any patches, pull requests, comments or questions for this layer to
@@ -78,6 +85,6 @@ xsct tools may not be backward compatible with embeddedsw repo. Meaning
         https://github.com/Xilinx/meta-xilinx (development and AMD release)
 	layers: meta-xilinx-core, meta-xilinx-microblaze, meta-xilinx-bsp,
             meta-xilinx-standalone, meta-xilinx-vendor.
-	branch: scarthgap or AMD release version (e.g. rel-v2025.1)
+	branch: scarthgap or AMD release version (e.g. rel-v2025.2)
 ---
 

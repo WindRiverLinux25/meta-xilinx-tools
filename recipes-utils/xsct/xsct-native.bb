@@ -86,6 +86,10 @@ do_compile() {
                 #   Vitis/2024.2/lib/lnx64.o/libcrypto.so.3: version `OPENSSL_3.3.0' not found (required by recipe-sysroot-native/usr/bin/../lib/libssl.so.3)
                 rm -rf ${PV}/lib/lnx64.o/libcrypto.so.3
                 ;;
+            2025.2)
+                # Remove local libc which conflicts with our libc
+                rm -rf ${PV}/lib/lnx64.o/Ubuntu/22/libc.so*
+                ;;
         esac
     else
         if [ ! -e ${XSCT_LOADER} ]; then
